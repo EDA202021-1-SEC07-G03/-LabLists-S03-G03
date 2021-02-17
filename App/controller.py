@@ -52,6 +52,10 @@ def loadData(catalog):
     loadTags(catalog)
     loadBooksTags(catalog)
     sortBooks(catalog)
+    """
+    SortBooks hace que la funcion se demore más ya que cuando cargan
+    los datos se tienen que ordenar.
+    """
 
 
 def loadBooks(catalog):
@@ -60,7 +64,7 @@ def loadBooks(catalog):
     cada uno de ellos, se crea en la lista de autores, a dicho autor y una
     referencia al libro que se esta procesando.
     """
-    booksfile = cf.data_dir + 'GoodReads/books-small.csv'
+    booksfile = cf.data_dir + 'GoodReads/books.csv'
     input_file = csv.DictReader(open(booksfile, encoding='utf-8'))
     for book in input_file:
         model.addBook(catalog, book)
@@ -80,7 +84,7 @@ def loadBooksTags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    booktagsfile = cf.data_dir + 'GoodReads/book_tags-small.csv'
+    booktagsfile = cf.data_dir + 'GoodReads/book_tags.csv'
     input_file = csv.DictReader(open(booktagsfile, encoding='utf-8'))
     for booktag in input_file:
         model.addBookTag(catalog, booktag)
